@@ -1,0 +1,161 @@
+# NIST message authentication codes
+## MAC
+NIST message authentication codes
+https://csrc.nist.gov/projects/message-authentication-codes
+
+### Glossary
+NIST Glossary
+https://csrc.nist.gov/glossary
+
+message authentication code (MAC)
+https://csrc.nist.gov/glossary/term/message_authentication_code
+
+## Request
+How do you differentiate between NIST security MAC and Ethernet MAC?
+## Answer by ChatGPT
+Excellent question — they share the same acronym “MAC,” but refer to completely different concepts in different contexts.
+Let’s clearly separate NIST security MAC and Ethernet MAC:
+🧩 1. NIST Security MAC — Message Authentication Code
+Domain: Cryptography / Information Security (NIST = National Institute of Standards and Technology)
+Aspect Description
+Full name Message Authentication Code
+Purpose To verify data integrity and authenticity. Ensures the message was not altered and was created by someone with the shared secret key.
+Defined by NIST (e.g., FIPS 198-1, SP 800-38B, etc.)
+Mechanism Cryptographic function using a secret key and a message to produce a short tag (MAC).
+Algorithms HMAC (Hash-based), CMAC (Block cipher-based), GMAC (Galois/Counter Mode-based)
+Key property Depends on a shared secret key — only parties knowing the key can verify or create valid MACs.
+Used in Secure protocols (TLS, IPsec, SSH), file integrity checking, firmware updates, etc.
+Example HMAC-SHA256(message, key) → 32-byte tag
+Analogy:
+Think of it as a digital wax seal ensuring that a message has not been tampered with and came from the expected sender.
+⚙️ 2. Ethernet MAC — Media Access Control Address
+Domain: Networking / Data Link Layer (IEEE 802.3, OSI Layer 2)
+Aspect Description
+Full name Media Access Control (Address)
+Purpose To uniquely identify a network interface card (NIC) on a local network.
+Defined by IEEE (e.g., IEEE 802.3 for Ethernet)
+Mechanism A 48-bit (or 64-bit) hardware address assigned to the NIC.
+Format Usually written as AA:BB:CC:DD:EE:FF
+Key property Used for frame delivery on the LAN; not secret, just an identifier.
+Used in Ethernet, Wi-Fi, Bluetooth (Layer 2 communication)
+Example 00:1A:2B:3C:4D:5E
+Analogy:
+Think of it as a postal address that uniquely identifies where to deliver network packets on a local network.
+🧠 Summary Comparison
+Feature NIST Security MAC Ethernet MAC
+Full Form Message Authentication Code Media Access Control (Address)
+Domain Cryptography / Security Networking / Data Link Layer
+Standardization Body NIST (FIPS, SP) IEEE (802 family)
+Function Data integrity + authenticity Device identification and frame routing
+Secret Key Required Not used
+Data Example Message → Tag Device → Address
+Typical Algorithms HMAC, CMAC, GMAC N/A (fixed binary identifier)
+Visibility Hidden (confidential) Public (visible in network traffic)
+🔐 Rule of Thumb:
+If you’re reading NIST/FIPS documents → MAC = Message Authentication Code (cryptographic).
+If you’re dealing with Ethernet, Wi-Fi, or IEEE 802.x → MAC = Media Access Control (networking).
+Would you like a diagram (e.g., PlantUML) showing how both types of MACs fit in their respective system stacks (cryptographic layer vs. OSI layer)?
+
+Is there any other way to say the short name of the Message Authentication Code other than MAC?
+
+Excellent follow-up — and yes, this is an important point because the acronym MAC is overloaded (especially confusing with Ethernet).
+Let’s clarify:
+🧩 1. Commonly accepted name
+The formal short name is indeed “MAC”.
+In NIST, ISO/IEC, and IETF documents, “MAC” almost always means Message Authentication Code when used in a cryptographic context.
+Example:
+NIST SP 800-38B — “Recommendation for Block Cipher Modes of Operation: The CMAC Mode for Authentication”
+ISO/IEC 9797 — “Message Authentication Codes (MACs)”
+⚠️ 2. Ambiguity problem
+Because “MAC” also means “Media Access Control (address)” in networking, it can be confusing in mixed technical discussions (e.g., in embedded or automotive security where both appear).
+✅ 3. Alternative ways to refer to it
+Alternative Phrase Usage Context Comment
+Auth tag or Authentication tag Cryptography (e.g., AES-GCM, ChaCha20-Poly1305) Common in modern AEAD (Authenticated Encryption with Associated Data) algorithms — equivalent in purpose to a MAC.
+Integrity code or Integrity tag Generic / informal Used in documentation when avoiding acronym confusion.
+Message tag Cryptographic libraries or specs Used in some APIs (e.g., OpenSSL, libsodium).
+HMAC/CMAC/GMAC Specific algorithm Safest and clearest shorthand; e.g., “use HMAC-SHA256” rather than just “MAC.”
+Authenticator Formal cryptographic term (NIST, ISO) Some documents use this instead of “MAC value.”
+Code of authenticity (rare) Academic / explanatory Seen in older or educational materials, but not standard.
+🧠 4. Recommended practice
+Context Recommended Term Example
+General cryptography “MAC (Message Authentication Code)” on first mention; “MAC” afterward “Compute the MAC using HMAC-SHA256.”
+Mixed networking + security context Use “auth tag” or specific name like “HMAC” “The packet includes an HMAC-SHA256 for authentication.”
+Documentation or teaching Expand once: “Message Authentication Code (MAC)” Prevents confusion with Ethernet MAC addresses.
+🔍 5. Example of clear writing
+“Each Ethernet frame carries a Media Access Control (MAC) address, while the payload includes a cryptographic HMAC-SHA256 tag — a Message Authentication Code ensuring integrity.”
+Would you like me to show a table comparing “MAC,” “auth tag,” and “digital signature” — to clarify how they differ in authentication strength and use cases?
+## Request
+Is the phrase "message integrity code (MIC)" confusing?
+## Answer by ChatGPT
+That’s a very perceptive question — and yes, the term “Message Integrity Code (MIC)” is real and used in some standards, but it can be confusing depending on the audience and context.
+Let’s unpack this carefully.
+🧩 1. What “MIC” actually means
+MIC = Message Integrity Code
+It’s essentially the same functional idea as a MAC (Message Authentication Code) — a short cryptographic checksum that protects message integrity.
+However:
+MICs don’t always imply authenticity (shared secret authentication),
+whereas MACs explicitly do.
+So the subtle difference is:
+🔒 MAC = Integrity + Authentication
+🧾 MIC = Integrity (sometimes without authentication guarantee)
+📚 2. Where “MIC” is actually used
+Context Standard / Source Meaning
+IEEE 802.11 (Wi-Fi) “Message Integrity Code (MIC)” field in WPA/TKIP frames Protects frames from tampering. Based on a keyed hash (so functionally a MAC, but called MIC).
+Bluetooth Uses “MIC” in link-layer encryption Integrity check value appended to packets.
+Zigbee / 802.15.4 Also defines “MIC” in the security header Integrity/authentication tag — same as a MAC.
+IPsec / IETF RFCs Occasionally uses “Integrity Check Value (ICV)” instead of MIC Same functional purpose.
+So:
+✅ MIC is legitimate and standardized in several IEEE and wireless protocols.
+❌ But outside those contexts, cryptographers almost universally use “MAC.”
+⚠️ 3. Why “MIC” can be confusing
+Source of confusion Explanation
+Overlap with MAC People may not know whether “MIC” implies secret-key authentication or just a checksum.
+Overlap with checksum/CRC Some engineers mistakenly equate “MIC” with simple error detection (like CRC), not cryptographic protection.
+Terminology inconsistency NIST, ISO, and IETF don’t generally use “MIC.” IEEE does — so mixing them causes friction.
+Abbreviation fatigue “MAC” (Media Access Control), “MIC” (Message Integrity Code), “ICV” (Integrity Check Value) all sound alike in security discussions.
+✅ 4. Practical recommendation
+Use Case Preferred Term Example
+Cryptographic documentation / NIST / IETF MAC (HMAC, CMAC, GMAC) “Compute the MAC over the message using HMAC-SHA256.”
+Wireless protocols (IEEE 802.11, Bluetooth, Zigbee) MIC “The WPA2 frame includes an 8-byte MIC field.”
+Cross-domain documents (network + security) Be explicit “Compute an HMAC (message integrity code) over the payload.”
+🧠 5. Quick summary
+Term Expands to Typical Context Authentication Guarantee Common Standard
+MAC Message Authentication Code NIST, IETF, cryptography ✅ Yes FIPS, SP 800
+MIC Message Integrity Code IEEE 802.11, Bluetooth ✅ Usually (but not always clear) IEEE 802.11i
+ICV Integrity Check Value IPsec, network protocols ✅ Yes RFC 4302
+🔍 In short:
+“MIC” is correct and standard in some IEEE protocols, but outside of those, it’s safer to say “MAC (Message Authentication Code)” or “auth tag.”
+Would you like me to show a timeline of how the terms CRC → MIC → MAC → Auth Tag evolved across standards (IEEE, NIST, IETF)? It makes the historical reason for this naming clearer.
+
+なぜSDAは流行らないのか。 with ChatGPT
+https://qiita.com/kaizen_nagoya/items/d99fac0516142320dc93
+
+SoftWare Defined Audioの第一参考資料。
+https://qiita.com/kaizen_nagoya/items/6980361bdb5908dfdaba
+
+MIDI は、なぜ　Software defined audioの中心技術じゃないのか。
+https://qiita.com/kaizen_nagoya/items/e5d3ad0326cf6433f666
+
+ISO IEC Artificial intelligence Standards
+https://qiita.com/kaizen_nagoya/items/1d1ffe4ac8e1dc67501f
+
+大規模言語モデル講座 基礎編 2025 Autumn　敗因を勝因に
+https://qiita.com/kaizen_nagoya/items/34ffd2b0c47a5f3665d9
+
+MCP入門 〜面倒なことはAIエージェントにやらせよう〜 by からあげ を聞きながら
+https://qiita.com/kaizen_nagoya/items/54b648c838fae8d57e38
+
+MCP入門 〜面倒なことはAIエージェントにやらせよう〜 by からあげ を聞きながら、補足と反論 by ChatGPT
+https://qiita.com/kaizen_nagoya/items/0939d58d31666562090c
+
+C言語を習得する３つの方法
+https://qiita.com/kaizen_nagoya/items/84cab0888c193bba429b
+
+Views上位６４記事　20250617現在
+https://qiita.com/kaizen_nagoya/items/26dbbd04cf18b7742972
+
+C言語(C++)が必要な人、必要ない人　with ChatGPT
+https://qiita.com/kaizen_nagoya/items/a074cb8cd292d8d94bd4
+
+C言語を習得する３つの方法　with ChatGPT
+https://qiita.com/kaizen_nagoya/items/4a3518a18fa49f46787f
