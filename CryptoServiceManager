@@ -1,0 +1,355 @@
+# AUTOSAR 402 Specification of Crypto Service Manager R24-11 with ChatGPT
+I'm a former Chack Point user. Time has flown by since I left my job as a network administrator.
+At work, I'm trying to strengthen my security.
+I'm currently organizing materials, focusing on automotive security, to ensure that overall security doesn't lag behind.
+Autosar Security and Crypto
+https://qiita.com/kaizen_nagoya/items/7aeba2219725384615cf
+I plan to gradually compile references and other materials from the following:
+AUTOSAR 402 Specification of Crypto Service Manager
+https://www.autosar.org/fileadmin/standards/R24-11/CP/AUTOSAR_CP_SWS_CryptoServiceManager.pdf
+3.1 Input documents & related standards and norms
+[1] Requirements on Crypto Stack AUTOSAR_CP_RS_CryptoStack
+[2] Glossary AUTOSAR_FO_TR_Glossary
+[3] Specification of Crypto Interface AUTOSAR_CP_SWS_CryptoInterface
+[4] Specification of Crypto Driver AUTOSAR_CP_SWS_CryptoDriver
+[5] Specification of Default Error Tracer AUTOSAR_CP_SWS_DefaultErrorTracer
+[6] General Specification of Basic Software Modules AUTOSAR_CP_SWS_BSWGeneral
+[7] General Requirements on Basic Software Modules AUTOSAR_CP_RS_BSWGeneral
+[8] IETF RFC 5639 – Elliptic Curve Cryptography (ECC) Brainpool Standard Curves and Curve Generation, 2010
+https://datatracker.ietf.org/doc/html/rfc5639
+[9] IETF RFC 6637 – Elliptic Curve Cryptography (ECC) in OpenPGP, 2012
+https://datatracker.ietf.org/doc/html/rfc2863
+[8] IETF RFC 5639 – Elliptic Curve Cryptography (ECC) Brainpool Standard Curves and Curve Generation, 2010
+7.1. Normative References
+[ANSI1] American National Standards Institute, "Public Key　Cryptography For The Financial Services Industry: The　Elliptic Curve Digital Signature Algorithm (ECDSA)", ANSI　X9.62, 2005.
+[RFC2119] Bradner, S., "Key words for use in RFCs to Indicate　Requirement Levels", BCP 14, RFC 2119, March 1997.
+[RFC5480] Turner, S., Brown, D., Yiu, K., Housley, R., and T. Polk,　"Elliptic Curve Cryptography Subject Public Key　Information", RFC 5480, March 2009.
+7.2. Informative References
+[ANSI2] American National Standards Institute, "Public Key　Cryptography For The Financial Services Industry: Key　Agreement and Key Transport Using The Elliptic Curve　Cryptography", ANSI X9.63, 2001.
+[BJ] Brier, E. and M. Joyce, "Fast Multiplication on Elliptic　Curves through Isogenies", Applied Algebra Algebraic　Algorithms and Error-Correcting Codes, Lecture Notes in　Computer Science 2643, Springer Verlag, 2003.
+[BG] Brown, J. and R. Gallant, "The Static Diffie-Hellman　Problem", Centre for Applied Cryptographic Research,　University of Waterloo, Technical Report CACR 2004-10,　2005.
+[BRS] Bohli, J., Roehrich, S., and R. Steinwandt, "Key　Substitution Attacks Revisited: Taking into Account　Malicious Signers", International Journal of Information　Security Volume 5, Issue 1, January 2006.
+[BSS] Blake, I., Seroussi, G., and N. Smart, "Elliptic Curves in　Cryptography", Cambridge University Press, 1999.
+[EBP] ECC Brainpool, "ECC Brainpool Standard Curves and Curve　Generation", October 2005, <http://www.ecc-brainpool.org/download/Domain-parameters.pdf>.
+[ETSI] European Telecommunications Standards Institute (ETSI),　"Algorithms and Parameters for Secure Electronic　Signatures, Part 1: Hash Functions and Asymmetric　Algorithms", TS 102 176-1, July 2005.
+[FIPS] National Institute of Standards and Technology, "Digital　Signature Standard (DSS)", FIPS PUB 186-2, December 1998.
+[G] Goubin, L., "A Refined Power-Analysis-Attack on Elliptic　Curve Cryptosystems", Proceedings of Public-Key-　Cryptography - PKC 2003, Lecture Notes in Computer Science　2567, Springer Verlag, 2003.
+[CFDA] Cohen, H., Frey, G., Doche, C., Avanzi, R., Lange, T.,　Nguyen, K., and F. Vercauteren, "Handbook of Elliptic and　Hyperelliptic Curve Cryptography", Chapman & Hall CRC　Press, 2006.
+[HMV] Hankerson, D., Menezes, A., and S. Vanstone, "Guide to　Elliptic Curve Cryptography", Springer Verlag, 2004.
+[HR] Huang, M. and W. Raskind, "Signature Calculus and the　Discrete Logarithm Problem for Elliptic Curves　(Preliminary Version)", Unpublished Preprint, 2006,　http://www-rcf.usc.edu/~mdhuang/mypapers/062806dl3.pdf.
+[ISO1] International Organization for Standardization,　"Information Technology - Security Techniques - Digital　Signatures with Appendix - Part 3: Discrete Logarithm　Based Mechanisms", ISO/IEC 14888-3, 2006.
+[ISO2] International Organization for Standardization,　"Information Technology - Security Techniques -　Cryptographic Techniques Based on Elliptic Curves - Part　2: Digital signatures", ISO/IEC 15946-2, 2002.
+[ISO3] International Organization for Standardization,　"Information Technology - Security Techniques - Prime　Number Generation", ISO/IEC 18032, 2005.
+[JMV] Jao, D., Miller, SD., and R. Venkatesan, "Ramanujan Graphs　and the Random Reducibility of Discrete Log on Isogenous　Elliptic Curves", IACR Cryptology ePrint Archive 2004/312,　2004.
+[RFC3279] Bassham, L., Polk, W., and R. Housley, "Algorithms and　Identifiers for the Internet X.509 Public Key　Infrastructure Certificate and Certificate Revocation List
+(CRL) Profile", RFC 3279, April 2002.
+[RFC4050] Blake-Wilson, S., Karlinger, G., Kobayashi, T., and Y.　Wang, "Using the Elliptic Curve Signature Algorithm
+(ECDSA) for XML Digital Signatures", RFC 4050, April 2005.
+[RFC4492] Blake-Wilson, S., Bolyard, N., Gupta, V., Hawk, C., and B.　Moeller, "Elliptic Curve Cryptography (ECC) Cipher Suites　for Transport Layer Security (TLS)", RFC 4492, May 2006.
+[RFC4754] Fu, D. and J. Solinas, "IKE and IKEv2 Authentication Using　the Elliptic Curve Digital Signature Algorithm (ECDSA)",　RFC 4754, January 2007.
+[RFC5753] Turner, S. and D. Brown, "Use of Elliptic Curve　Cryptography (ECC) Algorithms in Cryptographic Message　Syntax (CMS)", RFC 5753, January 2010.
+[SA] Satoh, T. and K. Araki, "Fermat Quotients and the　Polynomial Time Discrete Log Algorithm for Anomalous　Elliptic Curves", Commentarii Mathematici Universitatis　Sancti Pauli 47, 1998.
+[SEC1] Certicom Research, "Elliptic Curve Cryptography",　Standards for Efficient Cryptography (SEC) 1, September　2000.
+[SEC2] Certicom Research, "Recommended Elliptic Curve Domain　Parameters", Standards for Efficient Cryptography (SEC) 2,　September 2000.
+[Sem] Semaev, I., "Evaluation of Discrete Logarithms on Some　Elliptic Curves", Mathematics of Computation 67, 1998.
+[Sma] Smart, N., "The Discrete Logarithm Problem on Elliptic　Curves of Trace One", Journal of Cryptology 12, 1999.
+[9] IETF RFC 6637 – Elliptic Curve Cryptography (ECC) in OpenPGP, 2012
+8. References
+[1] Harrington, D., Presuhn, R. and B. Wijnen, "An Architecture for　Describing SNMP Management Frameworks", RFC 2571, April 1999.
+[2] Rose, M. and K. McCloghrie, "Structure and Identification of　Management Information for TCP/IP-based Internets", STD 16, RFC　1155, May 1990.
+[3] Rose, M. and K. McCloghrie, "Concise MIB Definitions", STD 16,　RFC 1212, March 1991.
+[4] Rose, M., "A Convention for Defining Traps for use with the　SNMP", RFC 1215, March 1991.
+[5] McCloghrie, K., Perkins, D., Schoenwaelder, J., Case, J., Rose,　M. and S. Waldbusser, "Structure of Management Information　Version 2 (SMIv2)", STD 58, RFC 2578, April 1999.
+[6] McCloghrie, K., Perkins, D., Schoenwaelder, J., Case, J., Rose,　M. and S. Waldbusser, "Textual Conventions for SMIv2", STD 58,　RFC 2579, April 1999.
+[7] McCloghrie, K., Perkins, D., Schoenwaelder, J., Case, J., Rose,　M. and S. Waldbusser, "Conformance Statements for SMIv2", STD　58, RFC 2580, April 1999.
+[8] Case, J., Fedor, M., Schoffstall, M. and J. Davin, "Simple　Network Management Protocol", STD 15, RFC 1157, May 1990.
+[9] Case, J., McCloghrie, K., Rose, M. and S. Waldbusser,　"Introduction to Community-based SNMPv2", RFC 1901, January　1996.
+[10] Case, J., McCloghrie, K., Rose, M. and S. Waldbusser, "Transport　Mappings for Version 2 of the Simple Network Management Protocol　(SNMPv2)", RFC 1906, January 1996.
+[11] Case, J., Harrington D., Presuhn R. and B. Wijnen, "Message　Processing and Dispatching for the Simple Network Management　Protocol (SNMP)", RFC 2572, January 1998.
+[12] Blumenthal, U. and B. Wijnen, "User-based Security Model (USM)　for version 3 of the Simple Network Management Protocol　(SNMPv3)", RFC 2574, January 1998.
+[13] Case, J., McCloghrie, K., Rose, M. and S. Waldbusser, "Protocol　Operations for Version 2 of the Simple Network Management　Protocol (SNMPv2)", RFC 1905, January 1996.
+[14] Levi, D., Meyer, P. and B. Stewart, "SMPv3 Applications", RFC　2573, January 1998.
+[15] Wijnen, B., Presuhn, R. and K. McCloghrie, "View-based Access　Control Model (VACM) for the Simple Network Management Protocol　(SNMP)", RFC 2575, January 1998.
+[16] Bradner, S., "Key words for use in RFCs to Indicate Requirements　Levels", BCP 14, RFC 2119, March 1997.
+[17] McCloghrie, K. and M. Rose, "Management Information Base for　Network Management of TCP/IP-based internets - MIB-II", STD 17.　RFC 1213, March 1991.
+[18] Postel, J., "Internet Protocol", STD 5, RFC 791, September 1981.
+[19] McCloghrie, K., "Extensions to the Generic-Interface MIB", RFC　1229, May 1991.
+[20] ATM Forum Technical Committee, "LAN Emulation Client Management:Version 1.0 Specification", af-lane-0044.000, ATM Forum,September 1995.
+[21] Stewart, B., "Definitions of Managed Objects for Character　Stream Devices using SMIv2", RFC 1658, July 1994.
+[22] Case, J., Mundy, R., Partain, D. and B. Stewart, "Introductionto Version 3 of the Internet-standard Network ManagementFramework", RFC 2570, April 1999.
+[23] McCloghrie, K. and F. Kastenholz, "Evolution of the Interfaces　Group of MIB-II", RFC 1573, January 1994.
+[24] McCloghrie, K. and F. Kastenholz, "The Interfaces Group MIB　using SMIv2", RFC 2233, November 1997.
+
+# ChatGPT
+## Request
+Please identify gaps in the document https://www.autosar.org/fileadmin/standards/R24-11/CP/AUTOSAR_CP_SWS_CryptoServiceManager.pdf and its references regarding automotive security technologies.
+## Answer by ChatGPT
+Thinking time: 40 seconds
+That's great — I've read your AUTOSAR "Specification of Crypto Service Manager (CSM)" R24-11 (PDF), its text, and its references, and made a best-effort effort to identify gaps in the document (plus references referenced within). Below are the major gaps and improvement points I detected after scanning the entire document (319 pages), along with their rationale (relevant PDF locations) and references to external standards and recent issues. I'll present the main points first, followed by a detailed list of gaps and prioritized improvement suggestions.
+Key Points (Brief)
+While the CSM specification provides detailed definitions of cryptographic APIs, jobs, and key management functions, there are several areas where cross-cutting and operational aspects important for practical use, such as "lifecycle management," "governance," "regulatory compliance," "hardware trust anchor/HSM integration," and "quantum resistance (PQC)," are not explicitly covered or are not fully covered.
+AUTOSAR
+The document itself clearly states that "there is no user management in the CSM" (i.e., access control should be handled at a higher level), which leaves the separation of responsibilities for key access control and authorization/authentication unclear. This puts it at a disadvantage in compliance with regulations (UNECE/ISO, etc.) and audits.
+AUTOSAR
+Consistency with recent industry requirements (UNECE R155/R156, ISO/SAE 21434, PQC, and widespread adoption of HSMs) needs to be confirmed and supplemented (evidence and proposals are provided below).
+ISO+2
+newtec.de+2
+Referenced sources (major)
+AUTOSAR — Specification of Crypto Service Manager, AUTOSAR CP R24-11 (PDF). Reviewed the full text (page 319).
+AUTOSAR
+ISO/SAE 21434 (Automotive Cybersecurity Standard: Lifecycle/TARA, etc.).
+ISO
+UNECE R155/R156 (Vehicle-Level CSMS and Software Update Management).
+newtec.de+1
+Recent discussions in the automotive field regarding Post-Quantum/PQC (industry articles/papers).
+Apriorit+1
+AUTOSAR Secure Hardware Extensions (SHE) and HSM-related documents (recommended references).
+AUTOSAR+1
+(The following will indicate the location of the relevant PDF for each issue.)
+Details: List of detected "omissions/deficiencies" (prioritized and accompanied by rationale)
+Priority: High (should be addressed first for practical and legal reasons)
+No clear alignment/trace to regulations/standards (ISO/SAE 21434, UNECE R155/R156)
+Rationale: The "Related documentation" section of the CSM document primarily lists internal AUTOSAR documents and several RFCs (e.g., RFC5639, RFC6637). However, there are no references to ISO/SAE 21434 or UNECE regulations (R155/R156) themselves, nor is there any mapping of how the CSM meets those requirements (see document table of contents/related literature list).
+AUTOSAR
+Impact: To meet vehicle certification (type approval) and CSMS requirements, it is necessary to clearly state how the CSM specifications contribute to operational aspects (lifecycle, TARA, and audit trails). Lack of procedures for compliance with external regulations is likely to be pointed out in audits.
+ISO+1
+Lack of operational procedures and interfaces for key lifecycle management (provisioning, rotation, retirement, backup, restoration, revocation).
+Rationale: While the CSM defines the "Key Management Interface," the specifications for specific processes for actual operation (injection during manufacturing, field updates/reprovisioning, revocation trail, key recovery) and for integration with external services are weak (though the specifications include "KeySetInvalid/KeyGetStatus," the operational flow for lifecycle management and management/audit log requirements are limited).
+AUTOSAR
+Impact: Lack of practical rules and trail retention for key injection and reprovisioning in the supply chain (OEM↔Supplier) will create gaps in security management. The integration specifications with hardware trust anchors (HSM/SHE) are abstract, potentially leading to significant differences in vendor implementations.
+Rationale: While the document clearly states that "the Crypto Driver provides SHA-1, RSA, AES, etc." (i.e., cryptographic routines are delegated to the driver/library), it does not explicitly state specific interfaces or requirements for HSM-specific functionality (secure boot rationale, key physical boundary, tamper-resistant logging, attested execution/attestation of key operations).
+AUTOSAR+1
+Impact: Implementations using HSMs will not be compatible between OEMs and suppliers. Reliance on vendor functionality under NDA will result in discrepancies in audits/assessments.
+Priority: Medium (necessary for near-future threats and assessments)
+Quantum resistance (Post-Quantum Cryptography, PQC) and algorithm agility are not addressed/are limited.
+Rationale: The document does not contain the terms "quantum" or "post-quantum," and there are no (or could not be found) references to NIST/NIST candidate or the PQC transition plan. Currently, PQC policies are becoming increasingly important in automotive security, considering long-term key storage and over-the-air key exchange.
+AUTOSAR+1
+Impact: Without design guidelines for migration policies, algorithm selection, hybrid key exchange, and other aspects to prepare for future quantum threats, it will take time to address future vulnerabilities.
+Specifications regarding telemetry, audit logs, and security event handling (evidence, forensics, incident response) are weak.
+Rationale: While the document includes chapters on "Security Events" and "Production Errors," details on what to log at what level (key operation logs, job execution logs, failure evidence), log protection, privacy, and transfer (protection when leaving the vehicle) are limited.
+AUTOSAR
+Impact: Reinforcements are needed in light of incident management and audit trail requirements such as UNECE/21434.
+Priority: Medium to Low (Design Quality/Depth of Defense)
+Lack of design guidelines for side-channel/physical attack countermeasures (timing attacks, electromagnetic attacks, intentional fault injection)
+Rationale: While CSM focuses on API and job specifications, requirements for physical side-channel countermeasure design (HSM TI support, masks, detection logic, etc.) primarily rely on separate documents for Crypto Driver and Secure Hardware.
+AUTOSAR+1
+Integrated specifications for certificate management (PKI) and X.509 lifecycle/format compatibility/revocation (CRL/OCSP) have been reduced.
+Rationale: The history states that "certificate functionality was moved to KeyM" (i.e., extracted from CSM), and there is limited mention of full certificate management within CSM itself. As a result, API and operational documentation for use cases that use certificates are scattered. AUTOSAR
+Specifications related to the supply chain (SBOM, provisioning chain, manufacturing/factory injection workflow) and CSM are weak.
+Rationale: CSM is a specification for basic software modules and does not address SBOM or provisioning operations (separate guidance is needed for these areas).
+AUTOSAR
+No mapping for evaluation and certification (FIPS/CC/PSA/Automotive HSM Certification)
+Rationale: The specification includes "algorithm groups," "jobs," and "error classifications," but there is no mapping to which external evaluation standards (FIPS 140, Common Criteria, PSA Certified) the implementation should conform to. Having this mapping would make it easier to assess the conformance of vendor implementations.
+AUTOSAR
+Priority-based Improvement Proposals (Specific and Practical)
+A. Immediate Implementation (Required)
+Add a Standards Mapping Section ("CSM and Standards Mapping")
+Purpose: Add a table mapping each CSM function (key management, jobs, logs, interfaces) to ISO/SAE 21434, UNECE R155/156, and (if necessary) WP.29 regulations. Clarify accountability during audits. Reference: ISO/SAE 21434 Overview.
+ISO+1
+Standardization Document for Key Lifecycle Operational Flow (Appendix or Separate Chapter)
+Includes: Manufacturing Injection, Inventory Key Management, Key Rotation Procedures, Revocation/Recovery Procedures (Who Performs This and Which Systems?), Logging Requirements (What to Record and at What Granularity), and API Extension Proposals.
+AUTOSAR
+Extending the HSM/SHE Interaction Specification
+Specific measures: Standardize the attestation API provided by HSMs, physical boundary assurance for key operations, persistent key storage format, and irreversible key operation logs (audit trails) between CSMs and CryptoDrivers. The interface will be specified with reference to AUTOSAR's Secure Hardware Extensions.
+AUTOSAR+1
+B. Mid-Term (Strategic)
+Add PQC Support Policy (Algorithm Agility)
+Specific measures: Enumerate the "algorithm ID" and "hybrid key exchange" support policy for future key and key exchange algorithms, PQC implementation guidelines, and affected jobs (signature, key exchange, KDF). Refer to the PQ discussion materials for automotive use.
+Apriorit+1
+Enhancement of the Attestation/Audit Log Specification
+Additions: Key creation/deletion/revocation/injection/rotation operation logs, evidence in case of job failure, log protection (integrity and confidentiality), external transfer rules (privacy considerations), etc.
+AUTOSAR
+Incident Response Trigger/Event Definition
+What: Define the interface (who will be notified and which module will instruct rollback) when a CSM-related incident occurs (suspected key leakage, HSM fault tolerance, invalidation command, etc.).
+C. Low to Complementary (Quality Improvement)
+Minimum specifications for side-channel resistance (requirements for the Crypto Driver)
+Example: Consider timing variation masking, constant-time operation options, and fault injection detection PINs.
+AUTOSAR
+Example of Evaluation/Certification Matrix
+Example: Include recommended implementation patterns in the appendix for implementations meeting "FIPS 140-2 Level X," "Common Criteria EAL Y," and "PSA Level Z."
+Specific "where (PDF section)" should be added (recommended locations)
+Chapter "3 Related Documentation": Added external standards (ISO/SAE 21434, UNECE R155/R156, NIST PQC Progress) and clarified the expected role of each document (scope of responsibility by the CSM and scope of responsibility externally).
+AUTOSAR+1
+"4.3 Security Implications": Following the current section that states "there is no user management" (the CSM is not responsible for access control), it is recommended to add "However, for audit and regulatory compliance, the following operational requirements must be met" (references to key logs, authorization boundaries, and provisioning procedures).
+AUTOSAR
+Section "7.2.2.3 Key Management": Added detailed key lifecycle flow and operational procedures for each case: Factory, Field, and Decommission.
+AUTOSAR
+Appendix "8 API Specification": Added HSM/attestation API, proposed PQC algorithm ID extension, and audit log API (maintaining backward compatibility).
+AUTOSAR
+Why this matters (briefly)
+Automobiles are long-lived products, and keys and certificates must be protected throughout the vehicle's lifetime.
+
+A. New section: "CSM — Mapping to External Standards"
+## X. Mapping to External Standards
+
+This section provides an explicit mapping between the functionalities defined in this Crypto Service Manager (CSM) specification and relevant external standards and regulations. The goal is to clarify responsibilities, support auditability, and assist implementers in achieving compliance with regulatory and industry requirements.
+
+X.1 Standards covered
+- ISO/SAE 21434: Road vehicles — Cybersecurity engineering
+- UNECE R155 / R156 (WP.29): Requirements for Cyber Security Management System (CSMS) and Software Update Management System (SUMS)
+- NIST publications relevant to cryptography and PQC transition
+- Other regional or market-specific regulations (to be declared by the product OEM)
+
+X.2 Mapping matrix (high-level)
+For each CSM capability (Key Management, Crypto Jobs, APIs, Logging, HSM integration), a mapping to the related clause(s) of the above standards is provided in Appendix Y (Mapping Matrix). Implementers should use this mapping to inform design choices, evidence collection, and operational procedures for certification and audits.
+
+X.3 Responsibility and boundary
+This document defines the functional boundary of the CSM. Responsibilities for access control, organizational policy, or system-level incident response remain with higher-level management systems (e.g., CSMS) and are outside the direct scope of the CSM. Nevertheless, CSM implements MUST provide traceable interfaces and logs enabling CSMS-level functions to perform their duties.
+B. Appendix/Section: "Key Lifecycle Management (Factory and Field)"
+## Y. Key Lifecycle Management (Factory and Field)
+
+Y.1 Overview
+This section defines standard operational procedures for cryptographic key lifecycle management covering: generation, provisioning (factory), activation, rotation, backup, recovery, revocation, and archival/destruction. It also defines required metadata and evidence that the CSM must expose.
+
+Y.2 Key metadata
+Each key managed by the CSM MUST be associated with the following metadata:
+- KeyIdentifier (unique)
+- KeyType (Symmetric / Asymmetric)
+- Origin (FactoryInjected | GeneratedInVehicle | Imported) 
+- ProtectionLevel (PlaintextAllowed | EncryptedAtRest | HSMProtected)
+- ValidFrom / ValidTo
+- UsagePolicy (signing | encryption | KDF | storage)
+- AuditFlags (recordCreation | recordUsage | recordExport)
+
+Y.3 Factory provisioning
+- Factory provisioning MUST be executed via a secure, auditable channel. The provisioning flow SHALL include:
+  1. Provisioning policy validation
+  2. Authenticating provisioning entity (mutual authentication)
+  3. Sealed injection (if HSM present) or encrypted transport
+  4. Receipt and non-repudiable audit record creation
+- CSM API: Key_ImportWithOrigin(KeyBlob, KeyMetadata, ProvisioningEvidence)
+
+Y.4 Rotation and expiry
+- Key rotation MUST be supported and performed according to UsagePolicy and ValidTo.
+- Rotation operations MUST create an immutable audit record including the triggering entity and time.
+- CSM API: Key_Rotate(KeyIdentifier, NewKeySpec, RotationEvidence)
+
+Y.5 Revocation and compromise handling
+- On suspected compromise, CSM SHALL allow immediate revocation of affected keys and must support broadcasting revocation to dependent modules.
+- CSM SHALL support revocation reasons and timestamped evidence.
+- CSM API: Key_Revoke(KeyIdentifier, ReasonCode, Evidence)
+
+Y.6 Backup and recovery
+- Backup of any key material that leaves the HSM boundary SHALL be encrypted and authorized by a multi-party control (e.g., split knowledge).
+- Recovery operations SHALL be logged with multi-party endorsement.
+
+Y.7 Audit and evidence
+- All lifecycle operations MUST produce signed audit records (see Audit Log section). Audit records SHALL include KeyIdentifier, operation, actor, timestamp, and outcome.
+C. Section: "HSM Integration and Attestation"
+## Z. HSM Integration and Remote Attestation
+
+Z.1 Purpose
+To provide a consistent set of interfaces between the CSM and secure hardware (HSM, Secure Element, or SHE) enabling implementers to rely on hardware-provided protection primitives while retaining interoperability across vendor implementations.
+
+Z.2 Required capabilities of underlying secure hardware
+- Secure key storage with non-exportability for protected keys
+- Cryptographic primitive implementations (AES, RSA, ECC, SHA, KDFs)
+- Remote/Local attestation capability to assert firmware/boot state, key origin, and HSM configuration
+- Secure lifecycle operations (secure key generation, secure erase)
+- Tamper detection / secure debug controls
+
+Z.3 Attestation interface (concept)
+- CSM SHALL be able to request an attestation token from the HSM describing the current security state. The attestation token SHALL be signed by the HSM's device key and include:
+  - HSM identifier
+  - Firmware version
+  - Secure boot state
+  - Keys (or KeyIdentifiers) present and their origin (if supported)
+  - Measured boot PCR values (if supported)
+- CSM API: Hsm_RequestAttestation(AttestationOptions) -> AttestationToken
+
+Z.4 Key origin and binding
+- When keys are provisioned into the vehicle, the CSM MUST tag keys with origin metadata and whether they are HSM-bound (non-exportable).
+
+Z.5 Failure modes
+- If attestation fails or device indicates tamper, CSM SHALL refuse to perform operations that require protected keys and SHALL emit an incident event.
+D. Section: "Audit Log and Forensics Support"
+## W. Audit Log and Forensics Support
+
+W.1 Objectives
+Provide consistent, tamper-evident audit records for cryptographic operations necessary for compliance, incident response, and forensic analysis.
+
+W.2 Required audit record fields
+- EventID
+- EventType (KeyCreate, KeyImport, KeyDelete, KeyRotate, CryptoOp, HSMAttest, AttestFail, Revoke)
+- KeyIdentifier (if applicable)
+- Actor (ComponentID, authenticated entity)
+- Timestamp (ISO8601 with timezone)
+- Outcome (Success/Failure/ErrorCode)
+- CorrelationID (to link related events)
+- EvidenceBlob (optional: signed attestation token, provisioning receipt)
+
+W.3 Protection
+- Audit records SHALL be protected for integrity (signed or HMAC) and SHALL support chained log signing to provide tamper-evidence.
+- If logs are transferred off-vehicle, transport SHALL be authenticated and logs SHALL be encrypted in transit.
+
+W.4 Retention and export
+- Retention period and export policy SHALL be defined by OEM/CSMS. CSM SHALL support on-demand export of events, with filters and pagination.
+- CSM API: Audit_Export(filter, destination, authorization) -> ExportReceipt
+3) API 追加案（C ヘッダ＋説明）
+以下は C 言語ヘッダとして追加できる宣言の例です。命名規約は AUTOSAR の既存スタイル（大文字スネーク等）に合わせて調整してください。
+
+/* csm_extensions.h -- Suggested C API extensions for HSM attestation, key lifecycle and audit export */
+
+#ifndef CSM_EXTENSIONS_H
+#define CSM_EXTENSIONS_H
+
+#include <stdint.h>
+#include <stddef.h>
+
+/* Basic types */
+typedef uint32_t CsmReturnType;
+#define CSM_OK 0
+#define CSM_ERROR_GENERIC 1
+#define CSM_ERROR_AUTH 2
+#define CSM_ERROR_NOT_FOUND 3
+#define CSM_ERROR_INVALID_ARG 4
+
+/* Key identifier */
+typedef struct { uint8_t id[16]; } CsmKeyId_t; /* 128-bit compact ID */
+
+/* Key metadata structure */
+typedef struct {
+    CsmKeyId_t keyId;
+    uint8_t keyType; /* 0=symmetric,1=asymmetric */
+    uint8_t origin;  /* 0=FactoryInjected,1=GeneratedInVehicle,2=Imported */
+    uint8_t protectionLevel; /* 0=Plain,1=EncryptedAtRest,2=HSMProtected */
+    uint64_t validFrom; /* epoch */
+    uint64_t validTo;   /* epoch */
+} CsmKeyMetadata_t;
+
+/* Attestation token (opaque blob returned by HSM) */
+typedef struct {
+    uint8_t *data;    /* pointer to DER/CBOR blob */
+    size_t   length;
+} CsmAttestationToken_t;
+
+/* Audit record filter */
+typedef struct {
+    uint64_t since; /* epoch */
+    uint64_t until; /* epoch */
+    uint8_t  eventMask; /* bitmask of event types */
+} CsmAuditFilter_t;
+
+/* Function: Request attestation from underlying secure hardware */
+CsmReturnType Csm_HsmRequestAttestation(const uint8_t options, CsmAttestationToken_t *token_out);
+
+/* Function: Import key with origin metadata and provisioning evidence */
+CsmReturnType Csm_KeyImportWithOrigin(const uint8_t *keyBlob, size_t blobLen, const CsmKeyMetadata_t *meta, const uint8_t *provEvidence, size_t provEvidenceLen, CsmKeyId_t *outKeyId);
+
+/* Function: Rotate key */
+CsmReturnType Csm_KeyRotate(const CsmKeyId_t *oldKeyId, const uint8_t *newKeySpec, size_t specLen, const uint8_t *rotationEvidence, size_t evidenceLen, CsmKeyId_t *outNewKeyId);
+
+/* Function: Revoke key */
+CsmReturnType Csm_KeyRevoke(const CsmKeyId_t *keyId, const uint8_t reasonCode, const uint8_t *evidence, size_t evidenceLen);
+
+/* Function: Export audit logs with filter and target (opaque dest) */
+CsmReturnType Csm_AuditExport(const CsmAuditFilter_t *filter, const uint8_t *destination, size_t destLen, uint8_t *exportReceipt, size_t *receiptLen);
+
+/* Function: Query audit log count matching filter */
+CsmReturnType Csm_AuditCount(const CsmAuditFilter_t *filter, uint32_t *count_out);
+
+#endif /* CSM_EXTENSIONS_H */
+
+### Reference
+AUTOSAR 402 Specification of Crypto Service Manager R24-11 with ChatGPT
+https://qiita.com/kaizen_nagoya/items/910e5cda2417af322ff6
