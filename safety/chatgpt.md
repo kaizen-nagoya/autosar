@@ -1,4 +1,5 @@
 Q1 Are there any parts or function of vehicle other than Seat Belts, Air Bags, Automated Vehicles for Safet, Tires and Driver Assistance Technologies? Please show me more than 16 items.
+
 A1 by chat GPT
 Yes—there are **many more vehicle parts and functions that contribute to safety** beyond seat belts, airbags, automated driving, tires, and driver assistance systems. Below is a **structured list (20+ items)** covering **mechanical, electrical, structural, and software safety domains**.
 
