@@ -1,5 +1,6 @@
 Q1 Are there any parts or function of vehicle other than Seat Belts, Air Bags, Automated Vehicles for Safet, Tires and Driver Assistance Technologies? Please show me more than 16 items. 
-A1
+
+A1　by gemini
 While the "big names" like airbags and seatbelts get most of the credit, modern vehicle safety is a complex web of structural engineering, lighting, and mechanical backups. 
 
 Here are more than 16 additional vehicle parts and functions that play a critical role in safety:
