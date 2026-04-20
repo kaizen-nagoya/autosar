@@ -5,7 +5,7 @@
 |641|Safety Use Case Example|https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_EXP_SafetyUseCase.pdf
 |664|Overview of Functional Safety Measures in AUTOSAR| https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_EXP_FunctionalSafetyMeasures.pdf
 |895|Explanation of Safety Overview| https://www.autosar.org/fileadmin/standards/R25-11/FO/AUTOSAR_FO_EXP_SafetyOverview.pdf
-|986|Safety Requirements for AUTOSAR Adaptive Platform and AUTOSAR Classic Platform||https://www.autosar.org/fileadmin/standards/R25-11/FO/AUTOSAR_FO_RS_Safety.pdf
+|986|Safety Requirements for AUTOSAR Adaptive Platform and AUTOSAR Classic Platform|https://www.autosar.org/fileadmin/standards/R25-11/FO/AUTOSAR_FO_RS_Safety.pdf
 |1086|Explanation of Safe API for hardware accelerators|https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_EXP_SafeHardwareAccelerationAPI.pdf
 |1088|Specification of Safe Hardware Acceleration|https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_SWS_SafeHardwareAcceleration.pdf
 |1106|Specification of a Functional Safety Communication Protocol Handler for SAE J1939| https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_SWS_SAEJ1939FunctionalSafetyCommProtocol.pdf
@@ -28,11 +28,11 @@
 ## Ref 895
 |No.|Title|File/URL|
 |--|--|--|
-[1] |ISO 26262:2018 Road vehicles -– Functional Safety https://www.iso.org
-[2] |Utilization of Crypto Services AUTOSAR_CP_EXP_UtilizationOfCryptoServices
-[3] |Glossary AUTOSAR_FO_TR_Glossary
-[4] |Virtual Functional Bus AUTOSAR_CP_TR_VFB
-[5] |Layered Software Architecture AUTOSAR_CP_EXP_LayeredSoftwareArchitecture
+[1] |ISO 26262:2018 Road vehicles -– Functional Safety |https://www.iso.org
+[2] |Utilization of Crypto Services |AUTOSAR_CP_EXP_UtilizationOfCryptoServices
+[3] |Glossary |AUTOSAR_FO_TR_Glossary
+[4] |Virtual Functional Bus |AUTOSAR_CP_TR_VFB
+[5] |Layered Software Architecture |AUTOSAR_CP_EXP_LayeredSoftwareArchitecture
 [6] |AUTOSAR Introduction|https://www.autosar.org/fileadmin/ABOUT/AUTOSAR_Introduction.pdf
 [7] |Explanation of Adaptive Platform Design|AUTOSAR_AP_EXP_PlatformDesign
 [8] |Overview of Functional Safety Measures in AUTOSAR|AUTOSAR_CP_EXP_FunctionalSafetyMeasures
@@ -44,7 +44,7 @@
 [14]| Basic Software Module Description Template|AUTOSAR_CP_TPS_BSWModuleDescriptionTemplate
 [15]| Mapping mixed-criticality applications on multi-core architectures|https://doi.org/10.7873/DATE.2014.111
 [16]| ISO 21434:2021 – Road vehicles – Cybersecurity engineering|https://www.iso.org
-[17]| IEEE Standard for Information Technology- Standardized Application Environment Profile (AEP)-POSIX Realtime and Embedded Application Support|https://standards.ieee.org/findstds/standard/1003.13-2003.html
+[17]| IEEE Standard for Information Technology-Standardized Application Environment Profile (AEP)-POSIX Realtime and Embedded Application Support|https://standards.ieee.org/findstds/standard/1003.13-2003.html
 [18]| API standards for Open Systems|http://www.opengroup.org/austin/papers/wp-apis.txt
 [19]| Standardized M1 Models used for the Definition of AUTOSAR|AUTOSAR_FO_MOD_GeneralDefinitions
 [20]| Safety Requirements for AUTOSAR Adaptive Platform and AUTOSAR Classic Platform|AUTOSAR_FO_RS_Safety
@@ -58,7 +58,7 @@
 [2]| Layered Software Architecture|AUTOSAR_CP_EXP_LayeredSoftwareArchitecture
 [3]| Explanation of Adaptive Platform Software Architecture|AUTOSAR_AP_EXP_SWArchitecture
 [4]| Explanation of Safety Overview|AUTOSAR_FO_EXP_SafetyOverview
-[5]| ISO 26262:2018 Road vehicles -– Functional Safety|https://www.iso.org
+[5]| ISO 26262:2018 Road vehicles - Functional Safety|https://www.iso.org
 [6]| Standardization Template|AUTOSAR_FO_TPS_StandardizationTemplate
 [7]| Glossary|AUTOSAR_FO_TR_Glossary
 [8]| Requirements on E2E|AUTOSAR_FO_RS_E2E
