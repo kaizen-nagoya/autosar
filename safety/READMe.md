@@ -4,9 +4,13 @@
 |271| Explanation of Application Interfaces of Occupant and Pedestrian Safety Systems Domain| https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_EXP_AIOccupantAndPedestrianSafety.pdf
 |641|Safety Use Case Example|https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_EXP_SafetyUseCase.pdf
 |664|Overview of Functional Safety Measures in AUTOSAR| https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_EXP_FunctionalSafetyMeasures.pdf
+|703| Specification of Hardware Test Manager on start up and shutdown|https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_SWS_HWTestManager.pdf
+|804|Specification and Integration of Hardware Test Management at start up and shutdown|https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_TR_HWTestManagementIntegrationGuide.pdf
 |895|Explanation of Safety Overview| https://www.autosar.org/fileadmin/standards/R25-11/FO/AUTOSAR_FO_EXP_SafetyOverview.pdf
 |986|Safety Requirements for AUTOSAR Adaptive Platform and AUTOSAR Classic Platform|https://www.autosar.org/fileadmin/standards/R25-11/FO/AUTOSAR_FO_RS_Safety.pdf
+|988| Explanation of Application Interface of AD/ADAS vehicle motion control|https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_SWS_HWTestManager.pdf
 |1086|Explanation of Safe API for hardware accelerators|https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_EXP_SafeHardwareAccelerationAPI.pdf
+|1087|Requirements on Safe Hardware Acceleration|https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_RS_SafeHardwareAcceleration.pdf
 |1088|Specification of Safe Hardware Acceleration|https://www.autosar.org/fileadmin/standards/R25-11/AP/AUTOSAR_AP_SWS_SafeHardwareAcceleration.pdf
 |1106|Specification of a Functional Safety Communication Protocol Handler for SAE J1939| https://www.autosar.org/fileadmin/standards/R25-11/CP/AUTOSAR_CP_SWS_SAEJ1939FunctionalSafetyCommProtocol.pdf
 
@@ -24,6 +28,29 @@
 [3]| Overview of Functional Safety Measures in AUTOSAR|AUTOSAR_CP_EXP_FunctionalSafetyMeasures
 [4]| Guide to BSW Distribution|AUTOSAR_CP_EXP_BSWDistributionGuide
 [5]|Glossary|AUTOSAR_FO_TR_Glossary
+
+## Ref 703
+|No.|Title|File/URL|
+|--|--|--|
+[1] Specification of Hardware Test Manager on start up and shutdown|AUTOSAR_CP_SWS_HWTestManager
+[2] Specification of ECU State Manager|AUTOSAR_CP_SWS_ECUStateManager
+[3] Specification of Operating System|AUTOSAR_CP_SWS_OS
+[4] Glossary|AUTOSAR_FO_TR_Glossary
+[5] General Specification of Basic Software Modules|AUTOSAR_CP_SWS_BSWGeneral
+[6] Layered Software Architecture|AUTOSAR_CP_EXP_LayeredSoftwareArchitecture
+[7] Specification of RTE Software|AUTOSAR_CP_SWS_RTE
+
+
+## Ref 804
+|No.|Title|File/URL|
+|--|--|--|
+[1] Glossary|AUTOSAR_FO_TR_Glossary
+[2] ISO 26262-5:2018 Part 5: Product development at the hardware level|https://www.iso.org
+[3] Specification of ECU State Manager|AUTOSAR_CP_SWS_ECUStateManager
+[4] Specification of Basic Software Mode Manager|AUTOSAR_CP_SWS_BSWModeManager
+[5] Specification of MCU Driver|AUTOSAR_CP_SWS_MCUDriver
+[6] Specification of Hardware Test Manager on start up and shutdown|AUTOSAR_CP_SWS_HWTestManager
+
 
 ## Ref 895
 |No.|Title|File/URL|
@@ -63,6 +90,18 @@
 [7]| Glossary|AUTOSAR_FO_TR_Glossary
 [8]| Requirements on E2E|AUTOSAR_FO_RS_E2E
 
+
+## Ref 986
+|No.|Title|File/URL|
+|--|--|--|
+[1] Explanation of Application Interfaces of the Chassis Domain|AUTOSAR_CP_EXP_AIChassis
+[2] ISO 8855:2011, Road vehicles – Vehicle dynamics and road-holding ability – Vocabulary|https://www.iso.org
+[3] Glossary|AUTOSAR_FO_TR_Glossary
+[4] ISO 26262:2018 Road vehicles -– Functional Safety|https://www.iso.org
+[5] ISO/PAS 21448:2019 – Road vehicles – Safety of the intended functionality|https://www.iso.org
+[6] JASPAR Standards Document: ST-AVI-1 – AD/ADAS Vehicle Motion Control Interface Specification Ver. 3.01|https://www.jaspar.jp/en
+
+
 ## Ref 1086
 |No.|Title|File/URL|
 |--|--|--|
@@ -74,6 +113,14 @@
 [6]|Specification of State Management|AUTOSAR_AP_SWS_StateManagement
 [7]|Specification of Execution Management|AUTOSAR_AP_SWS_ExecutionManagement
 [8]|Specification of Health Monitoring|AUTOSAR_FO_ASWS_HealthMonitoring
+
+
+## Ref 1087
+|No.|Title|File/URL|
+|--|--|--|
+[1] Standardization Template|AUTOSAR_FO_TPS_StandardizationTemplate
+[2] Safety Requirements for AUTOSAR Adaptive Platform and AUTOSAR Classic Platform|AUTOSAR_FO_RS_Safety
+[3] Glossary|AUTOSAR_FO_TR_Glossary
 
 ## Ref 1088
 |No.|Title|File/URL|
