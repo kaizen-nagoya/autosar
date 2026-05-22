@@ -1,8 +1,7 @@
 ---
-title: AUTOSAR(27) わかりにくいこと12, OSEK(67)
+title: AUTOSAR わかりにくいこと12
 tags: AUTOSAR XML 制御 小川メソッド OSEK
 author: kaizen_nagoya
-slide: false
 ---
 AUTOSAR わかりにくいこと ~~10~~ ~~11~~ 12 を開催します。
 
